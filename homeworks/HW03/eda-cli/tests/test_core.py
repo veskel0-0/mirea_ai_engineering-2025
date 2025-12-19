@@ -91,3 +91,26 @@ def test_no_constant_columns():
     missing_df = missing_table(df)
     flags = compute_quality_flags(summary, missing_df, df)
     assert flags["has_constant_columns"] is False
+
+def test_has_high_cardinality_categoricals_flag():
+    """Проверка новой эвристики: has_high_cardinality_categoricals."""
+    df = pd.DataFrame({
+        "id_like": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "A"],
+        "num": range(10)
+    })
+
+    summary = summarize_dataset(df)
+    missing_df = missing_table(df)
+    flags = compute_quality_flags(summary, missing_df, df)
+    assert flags["has_high_cardinality_categoricals"] is True
+
+def test_has_many_zero_values_flag():
+    """Проверка эвристики has_many_zero_values: >=90% нулей в числовой колонке."""
+    df = pd.DataFrame({
+        "mostly_zeros": [0] * 9 + [1],
+        "cat": ["X"] * 10
+    })
+    summary = summarize_dataset(df)
+    missing_df = missing_table(df)
+    flags = compute_quality_flags(summary, missing_df, df)
+    assert flags["has_many_zero_values"] is True
