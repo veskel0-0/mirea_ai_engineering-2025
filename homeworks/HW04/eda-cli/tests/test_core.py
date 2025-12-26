@@ -85,4 +85,4 @@ def test_has_many_zero_values_flag():
     summary = summarize_dataset(df)
     missing_df = missing_table(df)
     flags = compute_quality_flags(summary, missing_df, df)
-    assert flags["has_many_zero_values"] is True
+    assert flags["has_many_zero_values"] is np.True_

@@ -77,13 +77,22 @@ class QualityResponse(BaseModel):
         description="Размеры датасета: {'n_rows': ..., 'n_cols': ...}, если известны",
     )
 
+
+class DataQualityFlags(BaseModel):
+    """Эвристики."""
+    too_few_rows: bool = Field(..., description="Слишком мало строк")
+    too_many_columns: bool = Field(..., description="Слишком много столбцов")
+    max_missing_share: float = Field(..., ge=0.0, le=1.0, description="Максимальная доля пропущенных значений в любом столбце")
+    too_many_missing: bool = Field(..., description="Превышен порог пропущенных значений")
+    has_many_zero_values: bool = Field(..., description="Обнаружено много нулевых значений в числовых столбцах")
+    has_high_cardinality_categoricals: bool = Field(..., description="Есть категориальные признаки с высокой кардинальностью")
+    quality_score: float = Field(..., ge=0.0, le=1.0, description="Общий нормированный показатель качества данных")
+
+
 class FlagResponse(BaseModel):
     """Ответ заглушки модели эвристик."""
+    flags: DataQualityFlags = Field(..., description="Результаты проверки качества данных")
 
-    flags: dict[str, Any] | None = Field(
-        default=None,
-        description="Булевы флаги с подробностями",
-    )
 
 
 
@@ -259,7 +268,7 @@ async def quality_from_csv(file: UploadFile = File(...)) -> QualityResponse:
     tags=["quality"],
     summary="Проверка основных эвристик",
 )
-async def quality_flags_from_csv(file: UploadFile = File(...)) -> QualityResponse:
+async def quality_flags_from_csv(file: UploadFile = File(...)) -> FlagResponse:
     """
     Эндпоинт, который принимает CSV-файл, запускает EDA-ядро
     (summarize_dataset + missing_table + compute_quality_flags)
