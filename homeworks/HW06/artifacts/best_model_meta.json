@@ -1,0 +1,14 @@
+{
+    "best_model_name": "GradientBoostingClassifier",
+    "best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 5,
+        "min_samples_leaf": 10,
+        "n_estimators": 100
+    },
+    "test_metrics": {
+        "accuracy": 0.9225,
+        "roc_auc": 0.9675422781981617,
+        "f1_score": 0.8748317631224765
+    }
+}
