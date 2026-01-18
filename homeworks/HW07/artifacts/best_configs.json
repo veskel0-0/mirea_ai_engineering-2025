@@ -1,0 +1,44 @@
+{
+    "ds1": {
+        "method": "KMeans (k=2)",
+        "params": {
+            "KMeans": {
+                "n_clusters": 2
+            },
+            "DBSCAN": {
+                "eps": 1.7000000000000002,
+                "min_samples": 5
+            }
+        },
+        "chosen_method": "KMeans (k=2)",
+        "stability_ari": 1.0
+    },
+    "ds2": {
+        "method": "KMeans (k=2)",
+        "params": {
+            "KMeans": {
+                "n_clusters": 2
+            },
+            "DBSCAN": {
+                "eps": 0.6,
+                "min_samples": 5
+            }
+        },
+        "chosen_method": "KMeans (k=2)",
+        "stability_ari": null
+    },
+    "ds3": {
+        "method": "KMeans (k=3)",
+        "params": {
+            "KMeans": {
+                "n_clusters": 3
+            },
+            "DBSCAN": {
+                "eps": 0.1,
+                "min_samples": 5
+            }
+        },
+        "chosen_method": "KMeans (k=3)",
+        "stability_ari": null
+    }
+}
