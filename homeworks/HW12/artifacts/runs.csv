@@ -1,5 +1,5 @@
 experiment_id,task,dataset,seed,split_summary,window_size,horizon,model_summary,features_summary,scaler,optimizer,lr,epochs_trained,best_val_mae,best_val_rmse,best_val_mape,test_mae,test_rmse,test_mape,notes
-B1,forecasting,S12,42,70/10/20 temporal,,1,naive_last,None,,,,,16.048014354066986,19.70070150913802,0.10600841219997632,,,,
-B2,forecasting,S12,42,70/10/20 temporal,,1,moving_average_7,None,,,,,19.065563909774436,23.324741299399605,0.12591097301767298,,,,
-B3,forecasting,S12,42,70/10/20 temporal,,1,Ridge,lags+rolling+dayofweek,,,,,7.21467898317651,8.774761540275867,0.0483648969397188,,,,
-R1,forecasting,S12,42,70/10/20 temporal,14.0,1,GRU,raw series,StandardScaler,Adam,0.001,50.0,5.990707874298096,7.679403616081241,0.04074240103363991,6.793553352355957,8.537190028717047,0.044354408979415894,
+B1,forecasting,S12-hw-dataset.csv,42,70/10/20 temporal,,1,naive_last,None,,,,,16.048014354066986,19.70070150913802,0.10600841219997632,,,,
+B2,forecasting,S12-hw-dataset.csv,42,70/10/20 temporal,,1,moving_average_7,None,,,,,19.065563909774436,23.324741299399605,0.12591097301767298,,,,
+B3,forecasting,S12-hw-dataset.csv,42,70/10/20 temporal,,1,Ridge,lags+rolling+dayofweek,,,,,7.21467898317651,8.774761540275867,0.0483648969397188,,,,
+R1,forecasting,S12-hw-dataset.csv,42,70/10/20 temporal,14.0,1,GRU,raw series,StandardScaler,Adam,0.001,50.0,5.990707874298096,7.679403616081241,0.04074240103363991,6.793553352355957,8.537190028717047,0.044354408979415894,
